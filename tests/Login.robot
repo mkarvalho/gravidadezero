@@ -19,7 +19,7 @@ User Login
     User Should Be Logged In    ${user}
 
 Incorrect Pass
-    [Tags]    inc_pass
+    [Tags]    inv_pass
 
     ${user}    Create Dictionary    email=user@email.com    password=incorrectpassword
     Go To Login Page
@@ -37,7 +37,7 @@ User not found
     Modal Content Should Be    Usuário e/ou senha inválidos.
 
 Incorrect Email
-    [Tags]    inc_email
+    [Tags]    inv_email
 
     ${user}    Create Dictionary    email=user&email.com    password=pwd123
     Go To Login Page
