@@ -29,5 +29,11 @@ Insert User
     Execute Sql String    ${query}
 
 Users Seed
-    ${user}    Factory User Login
+    ${user}    Factory User    login
     Insert User    ${user}
+
+    ${user_kim}    Factory User    be_geek
+    Insert User    ${user_kim}
+
+    ${user_be_geek}    Factory User    attempt_be_geek
+    Insert User    ${user_be_geek}

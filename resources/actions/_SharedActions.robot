@@ -20,8 +20,13 @@ Modal Content Should Be
 Alert Span Should Be
     [Arguments]    ${expected_alert}
 
-    Wait For Elements State    css=span[class=error] >> text=${expected_alert}
-    ...    visible    5
+    Wait For Elements State    css=span[class=error]    visible    5
+
+    ${span}    Get Element    css=span[class=error]
+
+    ${text_error}    Get Text    ${span}
+
+    Should Be Equal    ${text_error}    ${expected_alert}
 
 Alert Spans Should Be
     [Arguments]    ${expected_alerts}

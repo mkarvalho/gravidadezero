@@ -9,7 +9,9 @@ Test Teardown       Finish Session
 
 *** Test Cases ***
 User Login
-    ${user}    Factory User Login
+    [Tags]    smoke
+
+    ${user}    Factory User    login
 
     Add User From Database    ${user}
 
@@ -46,7 +48,7 @@ Incorrect Email
     Should Be Type Email
 
 Required Email
-    [Tags]    temp
+    [Tags]    req_email
     ${user}    Create Dictionary    email=${EMPTY}    password=pwd123
 
     Go To Login Page
@@ -55,7 +57,7 @@ Required Email
     Alert Span Should Be    E-mail obrigatório
 
 Required Pass
-    [Tags]    temp
+    [Tags]    req_pass
     ${user}    Create Dictionary    email=user@email.com    password=${EMPTY}
 
     Go To Login Page
@@ -64,7 +66,7 @@ Required Pass
     Alert Span Should Be    Senha obrigatória
 
 Required Fields
-    [Tags]    temp
+    [Tags]    req_fields
 
     @{expected_alerts}    Create List
     ...    E-mail obrigatório

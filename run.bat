@@ -1,2 +1,2 @@
 robot -l NONE -o NONE -r NONE .\tasks\
-robot -d .\logs -i temp .\tests\Login.robot
+robot -d .\logs -i smoke  .\tests\

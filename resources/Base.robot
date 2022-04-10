@@ -4,11 +4,14 @@ Documentation       Base Test
 Library             Browser
 Library             Collections
 Library             factories/Users.py
+#
 Resource            Helpers.robot
 Resource            Database.robot
+#
 Resource            actions/SignupActions.robot
 Resource            actions/AuthActions.robot
 Resource            actions/_SharedActions.robot
+Resource            actions/GeekActions.robot
 
 
 *** Variables ***
@@ -22,4 +25,4 @@ Start Session
     New Page    ${BASE_URL}
 
 Finish Session
-    Take Screenshot
+    Take Screenshot    fullPage=True
