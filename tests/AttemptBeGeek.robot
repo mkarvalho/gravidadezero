@@ -23,6 +23,8 @@ Cost Only Letters    cost    aaaa    Valor hora deve ser numérico
 Cost Numbers And Letters    cost    aa123    Valor hora deve ser numérico
 Cost Special Chars    cost    !@@#    Valor hora deve ser numérico
 Cost Empty    cost    ${EMPTY}    Valor hora deve ser numérico
+No Printer Repair    printer_repair    ${EMPTY}    Por favor, informe se você é um Geek Supremo
+No Work    work    ${EMPTY}    Por favor, selecione o modelo de trabalho
 
 
 *** Keywords ***
