@@ -6,6 +6,7 @@ Resource            ../Base.robot
 
 *** Variables ***
 ${INPUT_EMAIL}      id=email
+${INPUT_PASS}       id=password
 
 
 *** Keywords ***
@@ -17,7 +18,7 @@ Fill Credentials
     [Arguments]    ${user}
 
     Fill Text    ${INPUT_EMAIL}    ${user}[email]
-    Fill Text    id=password    ${user}[password]
+    Fill Text    ${INPUT_PASS}    ${user}[password]
 
 Submit Credentials
     Click    css=.submit-button >> text=Entrar
