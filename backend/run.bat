@@ -1,0 +1,2 @@
+
+robot -d logs tests
