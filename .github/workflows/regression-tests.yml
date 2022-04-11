@@ -6,17 +6,17 @@ on:
 
 jobs:
   api_tests:
-
+  
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9"]
+        python-version: ["3.10"]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
@@ -25,21 +25,22 @@ jobs:
         pip install build
         pip install -r requirements.txt
     - name: Run API Tests
-      run: | 
+      run: |
         chmod +x ./backend/run.sh
         cd backend/ && ./run.sh
-    - name: Upload api test results
-      uses: actions/upload-artifact@v2.3.1
+    - name: Upload API Tests Results
+      uses: actions/upload-artifact@v3
       if: always()
       with:
         name: api-reports
         path: backend/logs
     - name: Test Reporter
       uses: dorny/test-reporter@v1.5.0
-      with:
+      with: 
         name: API Test Result
         path: backend/logs/xunit.xml
         reporter: java-junit
+
 
   web_tests:
     needs: api_tests
@@ -47,18 +48,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9"]
+        python-version: ["3.10"]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Set up Node 14
+    - name: Set up Node 16
       run: |
-        curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-        sudo apt-get install -y nodejs
+        curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+        sudo apt-get install -y nodejs  
     - name: Preparation
       run: |
         sudo apt-get update
@@ -71,18 +72,18 @@ jobs:
     - name: Run Browser Init
       run: rfbrowser init
     - name: Run Web Tests
-      run: | 
+      run: |
         chmod +x ./frontend/run.sh
         cd frontend/ && ./run.sh
-    - name: Upload web test results
-      uses: actions/upload-artifact@v2.3.1
+    - name: Upload Web Tests Results
+      uses: actions/upload-artifact@v3
       if: always()
       with:
         name: web-reports
         path: frontend/logs
     - name: Test Reporter
       uses: dorny/test-reporter@v1.5.0
-      with:
+      with: 
         name: Web Test Result
         path: frontend/logs/xunit.xml
         reporter: java-junit
